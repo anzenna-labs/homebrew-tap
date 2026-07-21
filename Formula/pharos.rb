@@ -1,14 +1,16 @@
 class Pharos < Formula
   desc "Anzenna AI Audit hook enrolling against the production portal"
   homepage "https://anzenna.ai/"
-  # URL is hardcoded per formula — pharos tracks production, pharos-test
-  # tracks the test portal, pharos-staging tracks staging. The workflow
-  # never rewrites this line; it reads it to know which portal to query.
-  url "https://app.anzenna.ai/endpoint-binaries/ai-audit-demo/pharos-darwin-arm64.tgz"
   # PHAROS_PIN_BEGIN — managed by .github/workflows/update-formula.yml
   version "v0.201.2.1"
   sha256 "bbf93eeab4f5a6efd7c0b37c86256af7b00557e664731ddf2a2d523dc9eb89dd"
   # PHAROS_PIN_END
+  # Versioned, immutable artifact URL: the portal serves the exact bytes
+  # this version's manifest recorded, so the sha256 above stays valid
+  # after later deploys move "latest" forward. The update workflow reads
+  # this line for the portal + filename (it strips the /versions/#{version}
+  # segment to build the /hash probe URL) and rewrites only the PIN block.
+  url "https://app.anzenna.ai/endpoint-binaries/ai-audit-demo/versions/#{version}/pharos-darwin-arm64.tgz"
   license "Proprietary"
 
   depends_on arch: :arm64
