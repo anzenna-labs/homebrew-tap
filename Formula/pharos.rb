@@ -2,8 +2,8 @@ class Pharos < Formula
   desc "Anzenna AI Audit hook enrolling against the production portal"
   homepage "https://anzenna.ai/"
   # PHAROS_PIN_BEGIN — managed by .github/workflows/update-formula.yml
-  version "v0.201.2.1"
-  sha256 "bbf93eeab4f5a6efd7c0b37c86256af7b00557e664731ddf2a2d523dc9eb89dd"
+  version "v0.203.2.2"
+  sha256 "aa912b2647073e248bbb8a9ef0ce6aadb987baa1fde25df1761a9defaf4e623d"
   # PHAROS_PIN_END
   # Versioned, immutable artifact URL: the portal serves the exact bytes
   # this version's manifest recorded, so the sha256 above stays valid
