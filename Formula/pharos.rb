@@ -2,8 +2,8 @@ class Pharos < Formula
   desc "Anzenna AI Audit hook enrolling against the production portal"
   homepage "https://anzenna.ai/"
   # PHAROS_PIN_BEGIN — managed by .github/workflows/update-formula.yml
-  version "v0.203.2.2"
-  sha256 "aa912b2647073e248bbb8a9ef0ce6aadb987baa1fde25df1761a9defaf4e623d"
+  version "v0.212.1"
+  sha256 "59d0bd74435568eca4641c6b14cffa6116e9243c6cd030ab25bade1d46432dab"
   # PHAROS_PIN_END
   # Versioned, immutable artifact URL: the portal serves the exact bytes
   # this version's manifest recorded, so the sha256 above stays valid
@@ -18,15 +18,15 @@ class Pharos < Formula
 
   # The pharos formulae install the same binaries — only one may be
   # active at a time.
-  conflicts_with "pharos-test", because: "installs the same anzenna-ai-audit binaries"
-  conflicts_with "pharos-staging", because: "installs the same anzenna-ai-audit binaries"
-  conflicts_with "pharos-demo", because: "installs the same anzenna-ai-audit binaries"
+  conflicts_with "pharos-test", because: "installs the same anzenna-pharos binaries"
+  conflicts_with "pharos-staging", because: "installs the same anzenna-pharos binaries"
+  conflicts_with "pharos-demo", because: "installs the same anzenna-pharos binaries"
 
   # Live channels install only the setup tool. The hook ships embedded in
   # it (written under managed-settings.d at install time) and the local
   # sink is a demo-only convenience, so it isn't placed on PATH here.
   def install
-    bin.install "anzenna-ai-audit-setup"
+    bin.install "anzenna-pharos-setup"
   end
 
   def caveats
@@ -38,21 +38,24 @@ class Pharos < Formula
       wire the hook into your AI agent, run (writes managed-settings, so
       it prompts for sudo):
 
-        sudo anzenna-ai-audit-setup \\
-          --portal-url https://app.anzenna.ai \\
+        sudo anzenna-pharos-setup \\
+          --portal-url https://feed.anzenna.ai \\
           --domain YOUR_DOMAIN \\
-          --enrollment-token YOUR_TOKEN
+          --client-token YOUR_CLIENT_TOKEN
 
-      You can omit --domain / --enrollment-token to be prompted, or set
-      ANZENNA_DOMAIN / ANZENNA_ENROLLMENT_TOKEN in the environment. The
-      device signing key is stored in the macOS keychain.
+      Your Client Token is shown in the Anzenna portal. You can omit
+      --domain / --client-token to be prompted, or set ANZENNA_DOMAIN /
+      ANZENNA_CLIENT_TOKEN in the environment — preferred for the token,
+      since a command-line argument is visible to every process on the
+      machine while the installer runs. The device signing key is stored
+      in the macOS keychain.
 
       Tear down configs/keys (binaries stay until `brew uninstall pharos`):
-        sudo anzenna-ai-audit-setup --uninstall
+        sudo anzenna-pharos-setup --uninstall
     EOS
   end
 
   test do
-    assert_predicate bin/"anzenna-ai-audit-setup", :executable?
+    assert_predicate bin/"anzenna-pharos-setup", :executable?
   end
 end
