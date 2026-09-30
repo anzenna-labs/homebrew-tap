@@ -1,5 +1,5 @@
 class Pharos < Formula
-  desc "Anzenna AI Audit hook enrolling against the production portal"
+  desc "Anzenna AI DLP endpoint agent enrolling against the production portal"
   homepage "https://anzenna.ai/"
   # PHAROS_PIN_BEGIN — managed by .github/workflows/update-formula.yml
   version "v0.212.1"
@@ -31,7 +31,7 @@ class Pharos < Formula
 
   def caveats
     <<~EOS
-      Pharos (the Anzenna AI Audit hook) is installed under
+      Anzenna AI DLP is installed under
       #{HOMEBREW_PREFIX}/bin.
 
       To enroll this device against your Anzenna production tenant and
