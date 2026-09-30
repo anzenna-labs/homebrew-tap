@@ -1,5 +1,5 @@
 class PharosDemo < Formula
-  desc "Anzenna AI Audit hook with a local insights sink (demo, no portal)"
+  desc "Anzenna AI DLP endpoint agent with a local insights sink (demo, no portal)"
   homepage "https://anzenna.ai/"
   # PHAROS_DEMO_PIN_BEGIN — managed by .github/workflows/update-formula.yml
   version "v0.212.4-0.20260926022805-93730bdb32c1"
@@ -42,7 +42,7 @@ class PharosDemo < Formula
 
   def caveats
     <<~EOS
-      Pharos demo-channel build installed under #{HOMEBREW_PREFIX}/bin.
+      Anzenna AI DLP demo-channel build installed under #{HOMEBREW_PREFIX}/bin.
 
       Two steps to get going:
 
