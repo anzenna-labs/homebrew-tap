@@ -24,7 +24,7 @@ The short version:
 brew tap anzenna-labs/tap
 brew install anzenna-labs/tap/pharos
 
-read -rs ANZENNA_CLIENT_TOKEN      # paste your Client Token, then Return
+read -rs ANZENNA_CLIENT_TOKEN
 export ANZENNA_CLIENT_TOKEN
 sudo --preserve-env=ANZENNA_CLIENT_TOKEN anzenna-pharos-setup \
   --portal-url https://feed.anzenna.ai \
@@ -32,6 +32,7 @@ sudo --preserve-env=ANZENNA_CLIENT_TOKEN anzenna-pharos-setup \
 unset ANZENNA_CLIENT_TOKEN
 ```
 
+After `read -rs`, paste your Client Token and press Return; nothing is echoed.
 Reading the token into the environment keeps it out of your shell history
 and out of the process list while the installer runs.
 
@@ -45,12 +46,15 @@ brew uninstall pharos
 
 ## Try the demo
 
+The demo wires the hook into Claude Code, runs a local sink on port 7777, and
+renders captured events to `~/.anzenna/insights.html`:
+
 ```sh
 brew tap anzenna-labs/tap
 brew install anzenna-labs/tap/pharos-demo
-sudo anzenna-pharos-setup --demo     # wires the hook into Claude Code
-brew services start pharos-demo      # starts the local sink on port 7777
-anzenna-pharos-sink --insights       # renders ~/.anzenna/insights.html
+sudo anzenna-pharos-setup --demo
+brew services start pharos-demo
+anzenna-pharos-sink --insights
 ```
 
 To remove it:
