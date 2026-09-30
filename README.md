@@ -20,21 +20,34 @@ enabled for your domain, then follow the full guide at
 [Install AI DLP via Homebrew](https://docs.anzenna.ai/docs/ai-dlp/homebrew).
 The short version:
 
-```sh
-brew tap anzenna-labs/tap
-brew install anzenna-labs/tap/pharos
+1. Install the package:
 
-read -rs ANZENNA_CLIENT_TOKEN
-export ANZENNA_CLIENT_TOKEN
-sudo --preserve-env=ANZENNA_CLIENT_TOKEN anzenna-pharos-setup \
-  --portal-url https://feed.anzenna.ai \
-  --domain YOUR_DOMAIN
-unset ANZENNA_CLIENT_TOKEN
-```
+   ```sh
+   brew tap anzenna-labs/tap
+   brew install anzenna-labs/tap/pharos
+   ```
 
-After `read -rs`, paste your Client Token and press Return; nothing is echoed.
-Reading the token into the environment keeps it out of your shell history
-and out of the process list while the installer runs.
+2. Read your Client Token into the environment. Run this line on its own,
+   paste the token, and press Return; nothing is echoed:
+
+   ```sh
+   read -rs ANZENNA_CLIENT_TOKEN
+   ```
+
+3. Enroll the Mac, replacing `YOUR_DOMAIN` with your Anzenna domain, then
+   clear the token:
+
+   ```sh
+   export ANZENNA_CLIENT_TOKEN
+   sudo --preserve-env=ANZENNA_CLIENT_TOKEN anzenna-pharos-setup \
+     --portal-url https://feed.anzenna.ai \
+     --domain YOUR_DOMAIN
+   unset ANZENNA_CLIENT_TOKEN
+   ```
+
+Passing the token through the environment keeps it out of your shell history
+and off the installer's command line, where every process on the Mac could
+read it.
 
 To uninstall, remove the agent before the package, since the package provides
 the uninstaller:
