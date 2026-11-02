@@ -2,8 +2,8 @@ class PharosDemo < Formula
   desc "Anzenna AI DLP endpoint agent with a local insights sink (demo, no portal)"
   homepage "https://anzenna.ai/"
   # PHAROS_DEMO_PIN_BEGIN — managed by .github/workflows/update-formula.yml
-  version "v0.217.1-0.20261026185910-489049d2580a"
-  sha256 "1657d430725e63bff79b446ebb57620f48eb07611affc7789798f50cca546431"
+  version "v0.217.6.3-0.20261102172930-977e20b2f41d"
+  sha256 "a2a2fca6ec60ccc2343dd95040cf9c63fe3b1efd09255650bb15c7c7e33a2baa"
   # PHAROS_DEMO_PIN_END
   # Versioned, immutable artifact URL: the portal serves the exact bytes
   # this version's manifest recorded, so the sha256 above stays valid
