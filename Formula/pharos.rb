@@ -2,8 +2,8 @@ class Pharos < Formula
   desc "Anzenna AI DLP endpoint agent enrolling against the production portal"
   homepage "https://anzenna.ai/"
   # PHAROS_PIN_BEGIN — managed by .github/workflows/update-formula.yml
-  version "v0.216.3"
-  sha256 "47114f8fa889941e4b923aa03237bfef1e9fda8e182b701c273f194b39f85206"
+  version "v0.218.2"
+  sha256 "c09674867460d7174390ea8136ba0c8d4b476de50c0c5a122c3a382a3a8bb199"
   # PHAROS_PIN_END
   # Versioned, immutable artifact URL: the portal serves the exact bytes
   # this version's manifest recorded, so the sha256 above stays valid
